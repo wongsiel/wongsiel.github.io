@@ -22,12 +22,12 @@
             <p id="welcomeText">Welcome.</p>
             <p id="aboutText">I'm Sielawk Wong, and I do...</p>
         </div>
-    </div>
+    </div>     
         
-    <div id="filterBox">
-      <button class="btn active" onclick="filterSelection('all')">ALL</button>
+    <div id="filterBox" class="normal">
+      <button class="btn" onclick="filterSelection('all')">ALL</button>
       <button class="btn" onclick="filterSelection('adv')">ADVERTISING</button>
-      <button class="btn" onclick="filterSelection('gfx')">GRAPHIC DESIGN</button>
+      <button class="btn active" onclick="filterSelection('gfx')">GRAPHIC DESIGN</button>
       <button class="btn" onclick="filterSelection('pho')">PHOTOGRAPHY</button>
       <button class="btn" onclick="filterSelection('oth')">OTHER</button>
     </div>
@@ -35,28 +35,28 @@
     <!-- Portfolio Gallery Grid -->
     <div class="masonry">
         <div class="column adv">
-        <div class="content">
+        <div class="content zoom">
           <img src="images/tolix.jpg" alt="Tolix" style="width:100%">
                 <div class="overlay">
                     <div class="text">TOLIX VIDEO</div>
                 </div>
         </div>
-      </div>
-        
-        <div class="column adv gfx">
-            <div class="content">
-              <img src="images/neutrogena.png" alt="Neutrogena" style="width:100%">
-                <div class="overlay">
-                    <div class="text">NEUTROGENA PRINT AD</div>
-                </div>
-            </div>
-        </div>
+      </div>      
         
         <div class="column adv gfx">
             <div class="content">
               <img src="images/burgerMain.jpg" alt="Out of Stock" style="width:100%">
                 <div class="overlay">
                     <div class="text">MAKE YOUR HOMEBURGER DIGITAL AD</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="column adv gfx">
+            <div class="content">
+              <img src="images/neutrogena.png" alt="Neutrogena" style="width:100%">
+                <div class="overlay">
+                    <div class="text">NEUTROGENA PRINT AD</div>
                 </div>
             </div>
         </div>
@@ -199,15 +199,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="column oth">
-            <div class="content">
-                <img src="images/other/swordchar.gif" alt="Sword Animation" style="width:100%">
-                <div class="overlay">
-                    <div class="text">SWORD CHARACTER 3D ANIMATION</div>
-                </div>
-            </div>
-        </div>
         
         <div class="column oth">
             <div class="content">
@@ -238,7 +229,31 @@
     <noscript>alert("JavaScript must be enabled to view this site correctly!");</noscript>
     
     <script>
-        filterSelection("all") // Execute the function and show all columns
+        
+        //----------------MODAL function--------------------- 
+        
+        
+        
+        //------------------Slide down nav---------------------
+        
+        // When the user scrolls down 20px from the top of the document, slide down the navbar
+        // When the user scrolls to the top of the page, slide up the navbar (50px out of the top view)
+        window.onscroll = stickyToggle;
+
+        function stickyToggle() {
+          var filterBox = document.getElementById("filterBox");    
+          var scrollGreaterThan300 = document.body.scrollTop > 300 || document.documentElement.scrollTop > 300;
+          filterBox.className = scrollGreaterThan300 ? "sticky" : "normal";
+//          if (scrollGreaterThan300) {
+//            filterBox.className = "sticky";   
+//          } else {
+//            filterBox.className = "normal";  
+//          }
+        }
+
+        //-----------------Filter function----------------------
+        
+        filterSelection("gfx") // Execute the function and show all columns
         function filterSelection(c) {
           var x, i;
           x = document.getElementsByClassName("column");
@@ -285,6 +300,7 @@
             this.className += " active";
           });
         }
+        
     </script>
     
     
